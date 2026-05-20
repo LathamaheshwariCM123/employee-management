@@ -13,7 +13,7 @@ pipeline {
 
             steps {
 
-                git 'https://github.com/yourusername/employee-management.git'
+                git 'https://github.com/LathamaheshwariCM123/employee-management.git'
 
             }
 
