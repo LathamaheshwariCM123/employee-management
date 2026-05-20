@@ -9,16 +9,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-
-            steps {
-
-                git 'https://github.com/LathamaheshwariCM123/employee-management.git'
-
-            }
-
-        }
-
         stage('Build') {
 
             steps {
@@ -63,7 +53,8 @@ pipeline {
 
             steps {
 
-                sh 'docker run -d --name employee-container employee-management || true'
+                sh 'docker rm -f employee-container || true'
+                sh 'docker run -d --name employee-container employee-management'
 
             }
 
