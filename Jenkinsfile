@@ -3,8 +3,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven3'
-        jdk 'JDK17'
+        maven 'Maven'
+        jdk 'JDK21'
     }
 
     stages {
@@ -57,6 +57,26 @@ pipeline {
                 sh 'docker run -d --name employee-container employee-management'
 
             }
+
+        }
+
+    }
+
+    post {
+
+        success {
+
+            mail to: 'lathacm90@gmail.com',
+            subject: 'Jenkins Build SUCCESS',
+            body: 'Employee Management project build completed successfully.'
+
+        }
+
+        failure {
+
+            mail to: 'lathacm90@gmail.com',
+            subject: 'Jenkins Build FAILED',
+            body: 'Employee Management project build failed. Check Jenkins console output.'
 
         }
 
